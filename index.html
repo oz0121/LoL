@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends チーム評価ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>League of Legends チーム評価ツール</h1>
+        <div class="version-info">
+            <p id="current-version">DDragonバージョン: 読み込み中...</p>
+        </div>
+
+        <div class="main-content">
+            <div class="team-builder">
+                <h2>チーム編成</h2>
+                <div class="team-slots">
+                    <div class="team-slot" data-role="top" data-slot-index="0">
+                        <div class="role-icon top"></div>
+                        <div class="champion-info">
+                            <img src="" alt="" class="selected-champion-icon">
+                            <span class="selected-champion-name"></span>
+                            <button class="action-button select-button">選択</button>
+                            <button class="action-button change-button">変更</button>
+                        </div>
+                    </div>
+                    <div class="team-slot" data-role="jungle" data-slot-index="1">
+                        <div class="role-icon jungle"></div>
+                        <div class="champion-info">
+                            <img src="" alt="" class="selected-champion-icon">
+                            <span class="selected-champion-name"></span>
+                            <button class="action-button select-button">選択</button>
+                            <button class="action-button change-button">変更</button>
+                        </div>
+                    </div>
+                    <div class="team-slot" data-role="mid" data-slot-index="2">
+                        <div class="role-icon mid"></div>
+                        <div class="champion-info">
+                            <img src="" alt="" class="selected-champion-icon">
+                            <span class="selected-champion-name"></span>
+                            <button class="action-button select-button">選択</button>
+                            <button class="action-button change-button">変更</button>
+                        </div>
+                    </div>
+                    <div class="team-slot" data-role="bot" data-slot-index="3">
+                        <div class="role-icon bot"></div>
+                        <div class="champion-info">
+                            <img src="" alt="" class="selected-champion-icon">
+                            <span class="selected-champion-name"></span>
+                            <button class="action-button select-button">選択</button>
+                            <button class="action-button change-button">変更</button>
+                        </div>
+                    </div>
+                    <div class="team-slot" data-role="support" data-slot-index="4">
+                        <div class="role-icon support"></div>
+                        <div class="champion-info">
+                            <img src="" alt="" class="selected-champion-icon">
+                            <span class="selected-champion-name"></span>
+                            <button class="action-button select-button">選択</button>
+                            <button class="action-button change-button">変更</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="evaluate-button" disabled>チームを評価する</button>
+            </div>
+
+            <div class="champion-browser">
+                <div class="browser-header">
+                    <input type="text" id="champion-search" placeholder="チャンピオンを検索 (日本語対応)">
+                </div>
+                <div class="champion-grid" id="champion-grid">
+                    <p>チャンピオンを読み込み中...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="evaluation-results">
+            <h2>チーム評価結果</h2>
+            <div class="summary">
+                <h3>概要:</h3>
+                <p id="team-summary">5体のチャンピオンを選択すると、ここに評価が表示されます。</p>
+            </div>
+            <div class="details">
+                <div class="good-points">
+                    <h3>良い点:</h3>
+                    <ul id="good-points"><li></li></ul>
+                </div>
+                <div class="bad-points">
+                    <h3>悪い点:</h3>
+                    <ul id="bad-points"><li></li></ul>
+                </div>
+                <div class="how-to-fight">
+                    <h3>立ち回り方:</h3>
+                    <ul id="how-to-fight"><li></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

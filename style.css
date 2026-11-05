@@ -1,0 +1,330 @@
+/* style.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a2e; /* ダークな背景色 */
+    color: #e0e0e0; /* 明るいテキスト色 */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    max-width: 1400px;
+    gap: 20px;
+}
+
+h1, h2, h3 {
+    color: #00bcd4; /* アクセントカラー */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.version-info {
+    text-align: right;
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+}
+
+.team-builder {
+    flex-basis: 280px; /* 固定幅に近く */
+    flex-shrink: 0;
+    padding: 20px;
+    background-color: #2a2a4a; /* 暗めのカード背景 */
+    border: 1px solid #3f3f6f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.team-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.team-slot {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #3b3b6b; /* スロットの背景色 */
+    border: 1px solid #5a5a8a;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.team-slot.active {
+    border-color: #00bcd4; /* アクティブなスロットの強調 */
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+.role-icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%; /* アイコンを丸く */
+    border: 1px solid #777; /* ロールアイコンの境界線 */
+    flex-shrink: 0;
+}
+
+/* ロールアイコンの画像パス。別途 'icons/' フォルダを作成し、以下の画像を用意してください。 */
+/* 例: top.png, jungle.png, mid.png, bot.png, support.png */
+.role-icon.top { background-image: url('icons/top.png'); }
+.role-icon.jungle { background-image: url('icons/jungle.png'); }
+.role-icon.mid { background-image: url('icons/mid.png'); }
+.role-icon.bot { background-image: url('icons/bot.png'); }
+.role-icon.support { background-image: url('icons/support.png'); }
+
+.champion-info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selected-champion-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid #5a5a8a;
+    display: none; /* 初期状態では非表示 */
+}
+
+.selected-champion-name {
+    font-weight: bold;
+    color: #eee;
+    margin-right: 10px;
+    flex-grow: 1;
+    display: none; /* 初期状態では非表示 */
+}
+
+.action-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.select-button {
+    background-color: #00bcd4;
+    color: #fff;
+}
+
+.select-button:hover {
+    background-color: #0097a7;
+}
+
+.change-button {
+    background-color: #f57c00;
+    color: #fff;
+    display: none; /* 初期状態では非表示 */
+}
+
+.change-button:hover {
+    background-color: #ef6c00;
+}
+
+#evaluate-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* 緑色 */
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#evaluate-button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+#evaluate-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.champion-browser {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #2a2a4a;
+    border: 1px solid #3f3f6f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.browser-header {
+    margin-bottom: 15px;
+}
+
+#champion-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: #eee;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#champion-search::placeholder {
+    color: #aaa;
+}
+
+.champion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 350px); /* 画面の高さに応じて調整 */
+    padding-right: 5px; /* スクロールバーのための余白 */
+}
+
+.champion-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.champion-grid::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+.champion-grid::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+
+.champion-grid .champion-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: #3b3b6b;
+    border: 1px solid #5a5a8a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.champion-grid .champion-item:hover:not(.unavailable) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+.champion-grid .champion-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* 丸いアイコン */
+    margin-bottom: 8px;
+    border: 2px solid #777;
+}
+
+.champion-grid .champion-item .champion-name {
+    font-size: 0.85em;
+    text-align: center;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* 親要素の幅に収める */
+}
+
+.champion-grid .champion-item.unavailable {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(80%); /* グレーアウト */
+}
+
+.evaluation-results {
+    width: 100%;
+    padding: 20px;
+    background-color: #2a2a4a;
+    border: 1px solid #3f3f6f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+.evaluation-results .summary p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.evaluation-results .details {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.evaluation-results .details > div {
+    flex: 1;
+    min-width: 280px; /* 小さい画面で折り返す */
+    background-color: #3b3b6b;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #5a5a8a;
+}
+
+.evaluation-results ul {
+    list-style-type: none; /* デフォルトのリストスタイルをなくす */
+    padding-left: 0;
+}
+
+.evaluation-results ul li {
+    background-color: #4a4a7a;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    color: #c0c0c0;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-builder {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .champion-browser {
+        width: 100%;
+    }
+
+    .evaluation-results .details {
+        flex-direction: column;
+    }
+
+    .champion-grid {
+        max-height: 400px; /* モバイルでのグリッドの高さ調整 */
+    }
+}
